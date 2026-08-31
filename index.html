@@ -247,6 +247,20 @@
     color: var(--muted);
     line-height: 1.5;
   }
+  .project-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .project-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .project-links a:hover { border-color: var(--accent); }
   .project-badge {
     flex-shrink: 0;
     font-size: 12px;
@@ -426,17 +440,24 @@
     <div class="projects-grid">
       <div class="project-card">
         <div>
-          <p class="project-title">個人作品集網站</p>
-          <p class="project-desc">你現在看的這個網站。用 AI 協助設計，從零開始建立。</p>
+          <p class="project-title">咖啡品牌形象網站</p>
+          <p class="project-desc">用 HTML5、CSS3、Bootstrap 5 打造的響應式咖啡電商形象網站，含商品列表與多斷點版面設計。</p>
+          <div class="project-links">
+            <a href="https://nonbiri1004.github.io/coffee-shop/" target="_blank">Demo</a>
+            <a href="https://github.com/nonbiri1004/coffee-shop" target="_blank">GitHub</a>
+          </div>
         </div>
         <span class="project-badge badge-live">上線中</span>
       </div>
-      <div class="project-card coming-soon">
+      <div class="project-card">
         <div>
-          <p class="project-title">下一個專案</p>
-          <p class="project-desc">正在構思中，學到新東西就會更新在這裡。</p>
+          <p class="project-title">醺然 Liquorman 觀光酒廠巡禮系統</p>
+          <p class="project-desc">五人團隊全端專題，負責商品預購與獎品兌換模組。實作跨 DbContext 交易處理、LINQ 查詢與 JWT 雙重驗證。</p>
+          <div class="project-links">
+            <a href="https://github.com/nonbiri1004/Liquorman-fullstack" target="_blank">GitHub</a>
+          </div>
         </div>
-        <span class="project-badge badge-soon">即將推出</span>
+        <span class="project-badge badge-wip">團隊專題</span>
       </div>
       <div class="project-card coming-soon">
         <div>
