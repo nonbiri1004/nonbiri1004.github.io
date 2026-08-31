@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay — Full-Stack Engineer in Progress</title>
+<style>
+  :root {
+    --bg:        #FAF7F2;
+    --surface:   #F2EBE0;
+    --border:    #E0D0BC;
+    --text:      #1C1510;
+    --muted:     #7A6558;
+    --accent:    #C8612A;
+    --accent-lt: #F5E6D4;
+    --radius:    12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Nav ── */
+  nav {
+    padding: 28px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 0 72px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-lt);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 0.3px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 76px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .hero h1 .name-accent {
+    display: inline-block;
+    position: relative;
+  }
+  .hero h1 .name-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline-in 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes underline-in {
+    to { transform: scaleX(1); }
+  }
+  .hero-sub {
+    font-size: 20px;
+    color: var(--muted);
+    margin-top: 20px;
+    max-width: 480px;
+    line-height: 1.5;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ── Section ── */
+  section { padding: 64px 0; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  /* ── About ── */
+  .about-text {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 580px;
+    line-height: 1.75;
+  }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  /* ── Skills ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .skill-card-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    font-size: 13px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .tag.active {
+    background: var(--accent-lt);
+    border-color: transparent;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ── Projects ── */
+  .projects-grid {
+    display: grid;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent); }
+  .project-card.coming-soon {
+    opacity: 0.65;
+    border-style: dashed;
+  }
+  .project-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .project-badge {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge-live {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+  .badge-wip {
+    background: var(--accent-lt);
+    color: var(--accent);
+  }
+  .badge-soon {
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Contact ── */
+  .contact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+    margin-top: 32px;
+  }
+  .contact-box p {
+    color: var(--muted);
+    margin: 12px 0 28px;
+    font-size: 17px;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── Fade-in ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fade-up 0.6s ease forwards;
+  }
+  @keyframes fade-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in:nth-child(3) { animation-delay: 0.25s; }
+  .fade-in:nth-child(4) { animation-delay: 0.35s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in, .hero h1 .name-accent::after {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .hero h1 .name-accent::after { transform: scaleX(1); }
+  }
+  @media (max-width: 600px) {
+    nav { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .hero { padding: 56px 0 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a class="logo" href="#">Jay</a>
+    <ul class="nav-links">
+      <li><a href="#about">關於</a></li>
+      <li><a href="#projects">作品</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="fade-in">
+      <span class="hero-eyebrow">Full-Stack Engineer in Progress</span>
+    </div>
+    <div class="fade-in">
+      <h1>Hi, I'm <span class="name-accent">Jay.</span></h1>
+    </div>
+    <div class="fade-in">
+      <p class="hero-sub">我正在學習全端開發，同時用 AI 把想法快速變成真實產品。</p>
+    </div>
+    <div class="fade-in hero-cta">
+      <a class="btn-primary" href="#projects">看我做的東西</a>
+      <a class="btn-ghost" href="#contact">聯絡我</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- About -->
+<div class="container">
+  <section id="about">
+    <p class="section-label">關於我</p>
+    <h2>在學習中的工程師</h2>
+    <p class="about-text">
+      我目前正在學習<strong>全端工程</strong>，從前端到後端一步步建立基礎。
+      同時我也在探索如何用 <strong>AI 工具</strong>把想法快速實現——
+      不等到「準備好」才開始，而是邊做邊學。
+      <br><br>
+      這個作品集記錄的是一個<strong>真實的學習過程</strong>，
+      不是完美的成果展，而是我正在走的路。
+    </p>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- Skills -->
+<div class="container">
+  <section id="skills">
+    <p class="section-label">技術 & 工具</p>
+    <h2>正在學習的東西</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <p class="skill-card-label">前端</p>
+        <div class="skill-tags">
+          <span class="tag active">HTML</span>
+          <span class="tag active">CSS</span>
+          <span class="tag active">JavaScript</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-card-label">後端</p>
+        <div class="skill-tags">
+          <span class="tag active">Node.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-card-label">AI 工具</p>
+        <div class="skill-tags">
+          <span class="tag active">Claude</span>
+          <span class="tag active">Cursor</span>
+          <span class="tag">GitHub Copilot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- Projects -->
+<div class="container">
+  <section id="projects">
+    <p class="section-label">作品</p>
+    <h2>做過的東西</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div>
+          <p class="project-title">個人作品集網站</p>
+          <p class="project-desc">你現在看的這個網站。用 AI 協助設計，從零開始建立。</p>
+        </div>
+        <span class="project-badge badge-live">上線中</span>
+      </div>
+      <div class="project-card coming-soon">
+        <div>
+          <p class="project-title">下一個專案</p>
+          <p class="project-desc">正在構思中，學到新東西就會更新在這裡。</p>
+        </div>
+        <span class="project-badge badge-soon">即將推出</span>
+      </div>
+      <div class="project-card coming-soon">
+        <div>
+          <p class="project-title">更多想法...</p>
+          <p class="project-desc">這個空位留給未來的自己。</p>
+        </div>
+        <span class="project-badge badge-soon">敬請期待</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- Contact -->
+<div class="container">
+  <section id="contact">
+    <p class="section-label">聯絡</p>
+    <h2>一起做點什麼</h2>
+    <div class="contact-box">
+      <h3 style="font-size:22px; font-weight:600;">有什麼想法嗎？</h3>
+      <p>我還在學習階段，歡迎交流、合作，或只是打個招呼。</p>
+      <div class="contact-links">
+        <a class="btn-primary" href="mailto:jing1004tw@gmail.com">寄信給我</a>
+        <a class="btn-ghost" href="https://github.com/nonbiri1004" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<div class="container">
+  <footer>
+    <span>© 2025 Jay</span>
+    <span>用 Claude 協助設計 · 全端學習中</span>
+  </footer>
+</div>
+
+</body>
+</html>
