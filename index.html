@@ -1,530 +1,614 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Jay — Full-Stack Developer</title>
-<meta name="description" content="Jay 的個人作品集。使用 C#、ASP.NET Core、Vue 3 開發全端專案，作品包含五人團隊的觀光酒廠巡禮系統與響應式咖啡品牌形象網站。">
-<meta name="author" content="Jay">
-<link rel="canonical" href="https://nonbiri1004.github.io/">
+    <title>Jay — Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Jay 的個人作品集。使用 C#、ASP.NET Core、Vue 3 開發全端專案，作品包含五人團隊的觀光酒廠巡禮系統與響應式咖啡品牌形象網站。"
+    />
+    <meta name="author" content="Jay" />
+    <link rel="canonical" href="https://nonbiri1004.github.io/" />
 
-<!-- 分享到社群時的預覽卡片 -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://nonbiri1004.github.io/">
-<meta property="og:site_name" content="Jay's Portfolio">
-<meta property="og:locale" content="zh_TW">
-<meta property="og:title" content="Jay — Full-Stack Developer">
-<meta property="og:description" content="使用 C#、ASP.NET Core、Vue 3 開發全端專案，從資料庫設計一路寫到前端畫面。">
-<meta property="og:image" content="https://nonbiri1004.github.io/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Jay — Full-Stack Developer，技術棧 C#、ASP.NET Core、Vue 3、SQL Server">
+    <!-- 分享到社群時的預覽卡片 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nonbiri1004.github.io/" />
+    <meta property="og:site_name" content="Jay's Portfolio" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content="Jay — Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="使用 C#、ASP.NET Core、Vue 3 開發全端專案，從資料庫設計一路寫到前端畫面。"
+    />
+    <meta
+      property="og:image"
+      content="https://nonbiri1004.github.io/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Jay — Full-Stack Developer，技術棧 C#、ASP.NET Core、Vue 3、SQL Server"
+    />
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Jay — Full-Stack Developer">
-<meta name="twitter:description" content="使用 C#、ASP.NET Core、Vue 3 開發全端專案，從資料庫設計一路寫到前端畫面。">
-<meta name="twitter:image" content="https://nonbiri1004.github.io/og-image.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jay — Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="使用 C#、ASP.NET Core、Vue 3 開發全端專案，從資料庫設計一路寫到前端畫面。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://nonbiri1004.github.io/og-image.png"
+    />
 
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#C8612A">
-<style>
-  :root {
-    --bg:        #FAF7F2;
-    --surface:   #F2EBE0;
-    --border:    #E0D0BC;
-    --text:      #1C1510;
-    --muted:     #7A6558;
-    --accent:    #C8612A;
-    --accent-lt: #F5E6D4;
-    --radius:    12px;
-  }
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#C8612A" />
+    <style>
+      :root {
+        --bg: #faf7f2;
+        --surface: #f2ebe0;
+        --border: #e0d0bc;
+        --text: #1c1510;
+        --muted: #7a6558;
+        --accent: #c8612a;
+        --accent-lt: #f5e6d4;
+        --radius: 12px;
+      }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-  }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+      }
 
-  /* ── Layout ── */
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+      /* ── Layout ── */
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
 
-  /* ── Nav ── */
-  nav {
-    padding: 28px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
+      /* ── Nav ── */
+      nav {
+        padding: 28px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        color: var(--text);
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+      }
 
-  /* ── Hero ── */
-  .hero {
-    padding: 80px 0 72px;
-    position: relative;
-  }
-  .hero-eyebrow {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    background: var(--accent-lt);
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-    letter-spacing: 0.3px;
-  }
-  .hero h1 {
-    font-size: clamp(48px, 8vw, 76px);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -2px;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .hero h1 .name-accent {
-    display: inline-block;
-    position: relative;
-  }
-  .hero h1 .name-accent::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: underline-in 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
-  }
-  @keyframes underline-in {
-    to { transform: scaleX(1); }
-  }
-  .hero-sub {
-    font-size: 20px;
-    color: var(--muted);
-    margin-top: 20px;
-    max-width: 480px;
-    line-height: 1.5;
-  }
-  .hero-cta {
-    display: flex;
-    gap: 12px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    transition: opacity 0.2s, transform 0.15s;
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--muted);
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    border: 1px solid var(--border);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+      /* ── Hero ── */
+      .hero {
+        padding: 80px 0 72px;
+        position: relative;
+      }
+      .hero-eyebrow {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--accent);
+        background: var(--accent-lt);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 24px;
+        letter-spacing: 0.3px;
+      }
+      .hero h1 {
+        font-size: clamp(48px, 8vw, 76px);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -2px;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .hero h1 .name-accent {
+        display: inline-block;
+        position: relative;
+      }
+      .hero h1 .name-accent::after {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: underline-in 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes underline-in {
+        to {
+          transform: scaleX(1);
+        }
+      }
+      .hero-sub {
+        font-size: 20px;
+        color: var(--muted);
+        margin-top: 20px;
+        max-width: 480px;
+        line-height: 1.5;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 12px;
+        margin-top: 36px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        transition:
+          opacity 0.2s,
+          transform 0.15s;
+      }
+      .btn-primary:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--muted);
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        border: 1px solid var(--border);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .btn-ghost:hover {
+        border-color: var(--muted);
+        color: var(--text);
+      }
 
-  /* ── Divider ── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0;
-  }
+      /* ── Divider ── */
+      .divider {
+        height: 1px;
+        background: var(--border);
+        margin: 0;
+      }
 
-  /* ── Section ── */
-  section { padding: 64px 0; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
-  section h2 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-  }
+      /* ── Section ── */
+      section {
+        padding: 64px 0;
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 20px;
+      }
+      section h2 {
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+      }
 
-  /* ── About ── */
-  .about-text {
-    color: var(--muted);
-    font-size: 17px;
-    max-width: 580px;
-    line-height: 1.75;
-  }
-  .about-text strong { color: var(--text); font-weight: 600; }
+      /* ── About ── */
+      .about-text {
+        color: var(--muted);
+        font-size: 17px;
+        max-width: 580px;
+        line-height: 1.75;
+      }
+      .about-text strong {
+        color: var(--text);
+        font-weight: 600;
+      }
 
-  /* ── Skills ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .skill-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-  }
-  .skill-card-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .tag {
-    font-size: 13px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 4px 10px;
-    border-radius: 6px;
-  }
+      /* ── Skills ── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .skill-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+      }
+      .skill-card-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        font-size: 13px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 4px 10px;
+        border-radius: 6px;
+      }
 
-  /* ── Projects ── */
-  .projects-grid {
-    display: grid;
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    transition: border-color 0.2s;
-  }
-  .project-card:hover { border-color: var(--accent); }
-  .project-card.coming-soon {
-    opacity: 0.65;
-    border-style: dashed;
-  }
-  .project-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .project-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .project-links {
-    display: flex;
-    gap: 14px;
-    margin-top: 12px;
-  }
-  .project-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .project-links a:hover { border-color: var(--accent); }
-  .project-badge {
-    flex-shrink: 0;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 10px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  .badge-live {
-    background: #E8F5E9;
-    color: #2E7D32;
-  }
-  .badge-wip {
-    background: var(--accent-lt);
-    color: var(--accent);
-  }
-  .badge-soon {
-    background: var(--surface);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
+      /* ── Projects ── */
+      .projects-grid {
+        display: grid;
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        transition: border-color 0.2s;
+      }
+      .project-card:hover {
+        border-color: var(--accent);
+      }
+      .project-card.coming-soon {
+        opacity: 0.65;
+        border-style: dashed;
+      }
+      .project-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .project-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .project-links {
+        display: flex;
+        gap: 14px;
+        margin-top: 12px;
+      }
+      .project-links a {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s;
+      }
+      .project-links a:hover {
+        border-color: var(--accent);
+      }
+      .project-badge {
+        flex-shrink: 0;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+      .badge-live {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+      .badge-wip {
+        background: var(--accent-lt);
+        color: var(--accent);
+      }
+      .badge-soon {
+        background: var(--surface);
+        color: var(--muted);
+        border: 1px solid var(--border);
+      }
 
-  /* ── Contact ── */
-  .contact-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 40px;
-    text-align: center;
-    margin-top: 32px;
-  }
-  .contact-box p {
-    color: var(--muted);
-    margin: 12px 0 28px;
-    font-size: 17px;
-  }
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+      /* ── Contact ── */
+      .contact-box {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 40px;
+        text-align: center;
+        margin-top: 32px;
+      }
+      .contact-box p {
+        color: var(--muted);
+        margin: 12px 0 28px;
+        font-size: 17px;
+      }
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
 
-  /* ── Footer ── */
-  footer {
-    padding: 32px 0;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: var(--muted);
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+      /* ── Footer ── */
+      footer {
+        padding: 32px 0;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--muted);
+        flex-wrap: wrap;
+        gap: 8px;
+      }
 
-  /* ── Fade-in ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    animation: fade-up 0.6s ease forwards;
-  }
-  @keyframes fade-up {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .fade-in:nth-child(1) { animation-delay: 0.05s; }
-  .fade-in:nth-child(2) { animation-delay: 0.15s; }
-  .fade-in:nth-child(3) { animation-delay: 0.25s; }
-  .fade-in:nth-child(4) { animation-delay: 0.35s; }
+      /* ── Fade-in ── */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fade-up 0.6s ease forwards;
+      }
+      @keyframes fade-up {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-in:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .fade-in:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .fade-in:nth-child(3) {
+        animation-delay: 0.25s;
+      }
+      .fade-in:nth-child(4) {
+        animation-delay: 0.35s;
+      }
 
-  @media (prefers-reduced-motion: reduce) {
-    .fade-in, .hero h1 .name-accent::after {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-    .hero h1 .name-accent::after { transform: scaleX(1); }
-  }
-  @media (max-width: 600px) {
-    nav { flex-direction: column; gap: 16px; align-items: flex-start; }
-    .hero { padding: 56px 0 48px; }
-  }
-</style>
-</head>
-<body>
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in,
+        .hero h1 .name-accent::after {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+        .hero h1 .name-accent::after {
+          transform: scaleX(1);
+        }
+      }
+      @media (max-width: 600px) {
+        nav {
+          flex-direction: column;
+          gap: 16px;
+          align-items: flex-start;
+        }
+        .hero {
+          padding: 56px 0 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="logo" href="/">Jay</a>
+        <ul class="nav-links">
+          <li><a href="#about">關於</a></li>
+          <li><a href="#projects">作品</a></li>
+          <li><a href="#contact">聯絡</a></li>
+        </ul>
+      </nav>
 
-<div class="container">
-  <nav>
-    <a class="logo" href="#">Jay</a>
-    <ul class="nav-links">
-      <li><a href="#about">關於</a></li>
-      <li><a href="#projects">作品</a></li>
-      <li><a href="#contact">聯絡</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero -->
-  <div class="hero">
-    <div class="fade-in">
-      <span class="hero-eyebrow">Full-Stack Developer · C# / Vue</span>
-    </div>
-    <div class="fade-in">
-      <h1>Hi, I'm <span class="name-accent">Jay.</span></h1>
-    </div>
-    <div class="fade-in">
-      <p class="hero-sub">用 C# 和 Vue 做全端開發，從資料庫設計一路寫到前端畫面。</p>
-    </div>
-    <div class="fade-in hero-cta">
-      <a class="btn-primary" href="#projects">看我做的東西</a>
-      <a class="btn-ghost" href="#contact">聯絡我</a>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- About -->
-<div class="container">
-  <section id="about">
-    <p class="section-label">關於我</p>
-    <h2>從資料庫到前端，我都動手做過</h2>
-    <p class="about-text">
-      在五人團隊的全端專題裡，我負責<strong>商品預購</strong>與<strong>獎品兌換</strong>兩個模組——
-      從資料表關聯設計、ASP.NET Core Web API，到 Vue 3 前端串接，整條線自己走完。
-      其中兌換流程要同時扣點數、扣庫存、寫入紀錄，
-      我讓兩個 DbContext <strong>共用同一條連線與同一個交易</strong>，確保三件事一起成功或一起失敗。
-      <br><br>
-      我習慣把每個決定的理由想清楚，而不只是讓功能跑起來——
-      例如兌換紀錄裡的點數我刻意存<strong>當下的快照</strong>而不是即時查詢，
-      因為獎品點數之後會調整，但歷史紀錄不該跟著變。
-    </p>
-  </section>
-</div>
-
-<div class="divider"></div>
-
-<!-- Skills -->
-<div class="container">
-  <section id="skills">
-    <p class="section-label">技術 & 工具</p>
-    <h2>專案中實際用過的技術</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <p class="skill-card-label">前端</p>
-        <div class="skill-tags">
-          <span class="tag">Vue 3</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">HTML5 / CSS3</span>
-          <span class="tag">Bootstrap 5</span>
-          <span class="tag">Tailwind CSS</span>
-          <span class="tag">RWD 響應式</span>
-          <span class="tag">Axios</span>
+      <!-- Hero -->
+      <div class="hero">
+        <div class="fade-in">
+          <span class="hero-eyebrow">Full-Stack Developer · C# / Vue</span>
+        </div>
+        <div class="fade-in">
+          <h1>Hi, I'm <span class="name-accent">Jay.</span></h1>
+        </div>
+        <div class="fade-in">
+          <p class="hero-sub">
+            用 C# 和 Vue 做全端開發，從資料庫設計一路寫到前端畫面。
+          </p>
+        </div>
+        <div class="fade-in hero-cta">
+          <a class="btn-primary" href="#projects">看我做的東西</a>
+          <a class="btn-ghost" href="#contact">聯絡我</a>
         </div>
       </div>
-      <div class="skill-card">
-        <p class="skill-card-label">後端與資料庫</p>
-        <div class="skill-tags">
-          <span class="tag">C#</span>
-          <span class="tag">ASP.NET Core</span>
-          <span class="tag">Entity Framework Core</span>
-          <span class="tag">SQL Server</span>
-          <span class="tag">RESTful API</span>
-          <span class="tag">JWT 驗證</span>
-          <span class="tag">交易處理</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <p class="skill-card-label">開發工具 &amp; 其他</p>
-        <div class="skill-tags">
-          <span class="tag">Git / GitHub</span>
-          <span class="tag">Claude Code</span>
-          <span class="tag">英文</span>
-          <span class="tag">日文 N3</span>
-        </div>
-      </div>
     </div>
-  </section>
-</div>
 
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<!-- Projects -->
-<div class="container">
-  <section id="projects">
-    <p class="section-label">作品</p>
-    <h2>做過的東西</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div>
-          <p class="project-title">咖啡品牌形象網站</p>
-          <p class="project-desc">用 HTML5、CSS3、Bootstrap 5 打造的響應式咖啡電商形象網站，含商品列表與多斷點版面設計。</p>
-          <div class="project-links">
-            <a href="https://nonbiri1004.github.io/coffee-shop/" target="_blank">Demo</a>
-            <a href="https://github.com/nonbiri1004/coffee-shop" target="_blank">GitHub</a>
+    <!-- About -->
+    <div class="container">
+      <section id="about">
+        <p class="section-label">關於我</p>
+        <h2>從資料庫到前端，我都動手做過</h2>
+        <p class="about-text">
+          在五人團隊的全端專題裡，我負責<strong>商品預購</strong>與<strong>獎品兌換</strong>兩個模組——
+          從資料表關聯設計、ASP.NET Core Web API，到 Vue 3
+          前端串接，整條線自己走完。
+          其中兌換流程要同時扣點數、扣庫存、寫入紀錄， 我讓兩個 DbContext
+          <strong>共用同一條連線與同一個交易</strong
+          >，確保三件事一起成功或一起失敗。 <br /><br />
+          我習慣把每個決定的理由想清楚，而不只是讓功能跑起來——
+          例如兌換紀錄裡的點數我刻意存<strong>當下的快照</strong>而不是即時查詢，
+          因為獎品點數之後會調整，但歷史紀錄不該跟著變。
+        </p>
+      </section>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Skills -->
+    <div class="container">
+      <section id="skills">
+        <p class="section-label">技術 & 工具</p>
+        <h2>專案中實際用過的技術</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <p class="skill-card-label">前端</p>
+            <div class="skill-tags">
+              <span class="tag">Vue 3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML5 / CSS3</span>
+              <span class="tag">Bootstrap 5</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">RWD 響應式</span>
+              <span class="tag">Axios</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-label">後端與資料庫</p>
+            <div class="skill-tags">
+              <span class="tag">C#</span>
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">Entity Framework Core</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">RESTful API</span>
+              <span class="tag">JWT 驗證</span>
+              <span class="tag">交易處理</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <p class="skill-card-label">開發工具 &amp; 其他</p>
+            <div class="skill-tags">
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">Claude Code</span>
+              <span class="tag">英文</span>
+              <span class="tag">日文 N3</span>
+            </div>
           </div>
         </div>
-        <span class="project-badge badge-live">上線中</span>
-      </div>
-      <div class="project-card">
-        <div>
-          <p class="project-title">醺然 Liquorman 觀光酒廠巡禮系統</p>
-          <p class="project-desc">五人團隊全端專題，負責商品預購與獎品兌換模組。實作跨 DbContext 交易處理、LINQ 查詢與 JWT 雙重驗證。</p>
-          <div class="project-links">
-            <a href="https://github.com/nonbiri1004/Liquorman-fullstack" target="_blank">GitHub</a>
+      </section>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Projects -->
+    <div class="container">
+      <section id="projects">
+        <p class="section-label">作品</p>
+        <h2>做過的東西</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div>
+              <p class="project-title">咖啡品牌形象網站</p>
+              <p class="project-desc">
+                用 HTML5、CSS3、Bootstrap 5
+                打造的響應式咖啡電商形象網站，含商品列表與多斷點版面設計。
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://nonbiri1004.github.io/coffee-shop/"
+                  target="_blank"
+                  >Demo</a
+                >
+                <a
+                  href="https://github.com/nonbiri1004/coffee-shop"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+            <span class="project-badge badge-live">上線中</span>
+          </div>
+          <div class="project-card">
+            <div>
+              <p class="project-title">醺然 Liquorman 觀光酒廠巡禮系統</p>
+              <p class="project-desc">
+                五人團隊全端專題，負責商品預購與獎品兌換模組。實作跨 DbContext
+                交易處理、LINQ 查詢與 JWT 雙重驗證。
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://github.com/nonbiri1004/Liquorman-fullstack"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+            <span class="project-badge badge-wip">團隊專題</span>
           </div>
         </div>
-        <span class="project-badge badge-wip">團隊專題</span>
-      </div>
-      <div class="project-card coming-soon">
-        <div>
-          <p class="project-title">更多想法...</p>
-          <p class="project-desc">這個空位留給未來的自己。</p>
+      </section>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Contact -->
+    <div class="container">
+      <section id="contact">
+        <p class="section-label">聯絡</p>
+        <h2>一起做點什麼</h2>
+        <div class="contact-box">
+          <h3 style="font-size: 22px; font-weight: 600">有什麼想法嗎？</h3>
+          <p>歡迎聊聊專案、技術，或是工作機會。</p>
+          <div class="contact-links">
+            <a class="btn-primary" href="mailto:jing1004tw@gmail.com"
+              >寄信給我</a
+            >
+            <a
+              class="btn-ghost"
+              href="https://github.com/nonbiri1004"
+              target="_blank"
+              >GitHub</a
+            >
+          </div>
         </div>
-        <span class="project-badge badge-soon">敬請期待</span>
-      </div>
+      </section>
     </div>
-  </section>
-</div>
 
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<!-- Contact -->
-<div class="container">
-  <section id="contact">
-    <p class="section-label">聯絡</p>
-    <h2>一起做點什麼</h2>
-    <div class="contact-box">
-      <h3 style="font-size:22px; font-weight:600;">有什麼想法嗎？</h3>
-      <p>歡迎聊聊專案、技術，或是工作機會。</p>
-      <div class="contact-links">
-        <a class="btn-primary" href="mailto:jing1004tw@gmail.com">寄信給我</a>
-        <a class="btn-ghost" href="https://github.com/nonbiri1004" target="_blank">GitHub</a>
-      </div>
+    <div class="container">
+      <footer>
+        <span>© 2026 Jay</span>
+        <span>用 Claude 協助設計</span>
+      </footer>
     </div>
-  </section>
-</div>
-
-<div class="divider"></div>
-
-<div class="container">
-  <footer>
-    <span>© 2025 Jay</span>
-    <span>用 Claude 協助設計</span>
-  </footer>
-</div>
-
-</body>
+  </body>
 </html>
