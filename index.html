@@ -278,6 +278,7 @@
       /* ── Projects ── */
       .projects-grid {
         display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 16px;
         margin-top: 32px;
       }
@@ -285,24 +286,34 @@
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 24px 28px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.2s;
+      }
+      .project-thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        border-bottom: 1px solid var(--border);
+      }
+      .project-body {
+        padding: 20px 24px 24px;
+      }
+      .project-head {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 16px;
-        transition: border-color 0.2s;
+        gap: 12px;
+        margin-bottom: 6px;
       }
       .project-card:hover {
         border-color: var(--accent);
       }
-      .project-card.coming-soon {
-        opacity: 0.65;
-        border-style: dashed;
-      }
       .project-title {
         font-size: 16px;
         font-weight: 600;
-        margin-bottom: 6px;
       }
       .project-desc {
         font-size: 14px;
@@ -340,11 +351,6 @@
       .badge-wip {
         background: var(--accent-lt);
         color: var(--accent);
-      }
-      .badge-soon {
-        background: var(--surface);
-        color: var(--muted);
-        border: 1px solid var(--border);
       }
 
       /* ── Contact ── */
@@ -459,7 +465,6 @@
         </div>
       </div>
     </div>
-
     <div class="divider"></div>
 
     <!-- About -->
@@ -535,8 +540,16 @@
         <h2>做過的東西</h2>
         <div class="projects-grid">
           <div class="project-card">
-            <div>
-              <p class="project-title">咖啡品牌形象網站</p>
+            <img
+              class="project-thumb"
+              src="images/coffee-shop.jpg"
+              alt="咖啡品牌形象網站首頁截圖"
+            />
+            <div class="project-body">
+              <div class="project-head">
+                <p class="project-title">咖啡品牌形象網站</p>
+                <span class="project-badge badge-live">上線中</span>
+              </div>
               <p class="project-desc">
                 用 HTML5、CSS3、Bootstrap 5
                 打造的響應式咖啡電商形象網站，含商品列表與多斷點版面設計。
@@ -554,13 +567,20 @@
                 >
               </div>
             </div>
-            <span class="project-badge badge-live">上線中</span>
           </div>
           <div class="project-card">
-            <div>
-              <p class="project-title">醺然 Liquorman 觀光酒廠巡禮系統</p>
+            <img
+              class="project-thumb"
+              src="images/liquorman.png"
+              alt="醺然 Liquorman 觀光酒廠巡禮系統畫面示意"
+            />
+            <div class="project-body">
+              <div class="project-head">
+                <p class="project-title">醺然 Liquorman 觀光酒廠巡禮系統</p>
+                <span class="project-badge badge-wip">團隊專題</span>
+              </div>
               <p class="project-desc">
-                五人團隊全端專題，負責商品預購與獎品兌換模組。實作跨 DbContext
+                五人團隊全端專題，負責商品預購與獎品兌換模組，實作跨 DbContext
                 交易處理、LINQ 查詢與 JWT 雙重驗證。
               </p>
               <div class="project-links">
@@ -571,7 +591,6 @@
                 >
               </div>
             </div>
-            <span class="project-badge badge-wip">團隊專題</span>
           </div>
         </div>
       </section>
