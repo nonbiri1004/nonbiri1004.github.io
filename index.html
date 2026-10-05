@@ -4,44 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Jay — Full-Stack Developer</title>
+    <title>Jay Studio — 全端開發 × AI 工作流</title>
     <meta
       name="description"
-      content="Jay 的個人作品集。使用 C#、ASP.NET Core、Vue 3 開發全端專案，作品包含五人團隊的觀光酒廠巡禮系統與響應式咖啡品牌形象網站。"
+      content="Jay Studio 幫品牌和小團隊做網站、串接 AI，把出圖、出片和重複的工作交給系統。提供 AI 圖片與影片工作流、AI 工具串接、網站與全端開發、技術評估報告。"
     />
     <meta name="author" content="Jay" />
-    <link rel="canonical" href="https://nonbiri1004.github.io/" />
+    <link rel="canonical" href="https://jaystudio1004.com/" />
 
     <!-- 分享到社群時的預覽卡片 -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://nonbiri1004.github.io/" />
-    <meta property="og:site_name" content="Jay's Portfolio" />
+    <meta property="og:url" content="https://jaystudio1004.com/" />
+    <meta property="og:site_name" content="Jay Studio" />
     <meta property="og:locale" content="zh_TW" />
-    <meta property="og:title" content="Jay — Full-Stack Developer" />
+    <meta property="og:title" content="Jay Studio — 全端開發 × AI 工作流" />
     <meta
       property="og:description"
-      content="使用 C#、ASP.NET Core、Vue 3 開發全端專案，從資料庫設計一路寫到前端畫面。"
+      content="幫品牌和小團隊做網站、串接 AI，把出圖、出片和重複的工作交給系統。"
     />
     <meta
       property="og:image"
-      content="https://nonbiri1004.github.io/og-image.png"
+      content="https://jaystudio1004.com/og-image.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Jay — Full-Stack Developer，技術棧 C#、ASP.NET Core、Vue 3、SQL Server"
+      content="Jay Studio — 全端開發 × AI 工作流"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Jay — Full-Stack Developer" />
+    <meta name="twitter:title" content="Jay Studio — 全端開發 × AI 工作流" />
     <meta
       name="twitter:description"
-      content="使用 C#、ASP.NET Core、Vue 3 開發全端專案，從資料庫設計一路寫到前端畫面。"
+      content="幫品牌和小團隊做網站、串接 AI，把出圖、出片和重複的工作交給系統。"
     />
     <meta
       name="twitter:image"
-      content="https://nonbiri1004.github.io/og-image.png"
+      content="https://jaystudio1004.com/og-image.png"
     />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -275,6 +275,81 @@
         border-radius: 6px;
       }
 
+      /* ── Services ── */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .service-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+      }
+      .service-card h3 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .service-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .service-card .service-for {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+      }
+      .service-card .service-for strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* ── Process ── */
+      .steps {
+        list-style: none;
+        counter-reset: step;
+        display: grid;
+        gap: 12px;
+        margin-top: 32px;
+      }
+      .steps li {
+        counter-increment: step;
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 16px;
+        align-items: start;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px 24px;
+      }
+      .steps li::before {
+        content: counter(step);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--accent-lt);
+        color: var(--accent);
+        font-weight: 600;
+        display: grid;
+        place-items: center;
+      }
+      .steps h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .steps p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
       /* ── Projects ── */
       .projects-grid {
         display: grid;
@@ -438,10 +513,11 @@
   <body>
     <div class="container">
       <nav>
-        <a class="logo" href="/">Jay</a>
+        <a class="logo" href="/">Jay Studio</a>
         <ul class="nav-links">
-          <li><a href="#about">關於</a></li>
+          <li><a href="#services">服務</a></li>
           <li><a href="#projects">作品</a></li>
+          <li><a href="#process">合作流程</a></li>
           <li><a href="#contact">聯絡</a></li>
         </ul>
       </nav>
@@ -449,22 +525,73 @@
       <!-- Hero -->
       <div class="hero">
         <div class="fade-in">
-          <span class="hero-eyebrow">Full-Stack Developer · C# / Vue</span>
+          <span class="hero-eyebrow">Jay Studio · 全端開發 × AI 工作流</span>
         </div>
         <div class="fade-in">
           <h1>Hi, I'm <span class="name-accent">Jay.</span></h1>
         </div>
         <div class="fade-in">
           <p class="hero-sub">
-            用 C# 和 Vue 做全端開發，從資料庫設計一路寫到前端畫面。
+            幫品牌和小團隊做網站、串接 AI，把出圖、出片和重複的工作交給系統。
           </p>
         </div>
         <div class="fade-in hero-cta">
-          <a class="btn-primary" href="#projects">看我做的東西</a>
-          <a class="btn-ghost" href="#contact">聯絡我</a>
+          <a class="btn-primary" href="mailto:hello@jaystudio1004.com"
+            >聊聊你的需求</a
+          >
+          <a class="btn-ghost" href="#services">看服務項目</a>
         </div>
       </div>
     </div>
+    <div class="divider"></div>
+
+    <!-- Services -->
+    <div class="container">
+      <section id="services">
+        <p class="section-label">服務</p>
+        <h2>我可以幫你做的事</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>AI 圖片與影片工作流</h3>
+            <p>
+              商品圖、人物換裝、場景合成、短影音重製。把提示詞和流程整理成可以重複使用的模板，之後換素材就能直接生成。
+            </p>
+            <p class="service-for">
+              <strong>適合：</strong>需要大量出圖、出片的電商、品牌與自媒體
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>AI 工具串接與小型系統</h3>
+            <p>
+              把圖片、影片、語音或文字 AI 接進你現有的流程或後台，做成同事打開網頁就能用的工具。
+            </p>
+            <p class="service-for">
+              <strong>適合：</strong>想用 AI，但不想每個人都去學一套工具的團隊
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>網站與全端開發</h3>
+            <p>
+              形象網站、後台系統、資料庫設計，從規劃到上線。前端用 Vue 或純
+              HTML/CSS，後端用 C# 和 ASP.NET Core。
+            </p>
+            <p class="service-for">
+              <strong>適合：</strong>需要官網或內部系統的品牌與小店
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>技術評估與研究報告</h3>
+            <p>
+              競品分析、AI 工具與模型比較、成本試算。整理成看得懂的報告，幫你在花錢之前先做好決定。
+            </p>
+            <p class="service-for">
+              <strong>適合：</strong>想導入 AI 或新系統，但不確定從哪開始的團隊
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <div class="divider"></div>
 
     <!-- About -->
@@ -473,15 +600,14 @@
         <p class="section-label">關於我</p>
         <h2>從資料庫到前端，我都動手做過</h2>
         <p class="about-text">
-          在五人團隊的全端專題裡，我負責<strong>商品預購</strong>與<strong>獎品兌換</strong>兩個模組——
-          從資料表關聯設計、ASP.NET Core Web API，到 Vue 3
-          前端串接，整條線自己走完。
-          其中兌換流程要同時扣點數、扣庫存、寫入紀錄， 我讓兩個 DbContext
-          <strong>共用同一條連線與同一個交易</strong
-          >，確保三件事一起成功或一起失敗。 <br /><br />
-          我習慣把每個決定的理由想清楚，而不只是讓功能跑起來——
-          例如兌換紀錄裡的點數我刻意存<strong>當下的快照</strong>而不是即時查詢，
-          因為獎品點數之後會調整，但歷史紀錄不該跟著變。
+          我是 Jay，全端工程師。最近的工作是幫電商品牌把
+          <strong>AI 圖片與影片生成</strong>整合進內部流程，讓內容團隊在一個畫布上就能從素材做到成片。
+          <br /><br />
+          在五人團隊的全端專題裡，我負責<strong>商品預購</strong>與<strong>獎品兌換</strong>兩個模組，
+          從資料表設計、ASP.NET Core Web API 到 Vue 3 前端，整條線自己走完。
+          兌換流程要同時扣點數、扣庫存、寫入紀錄，我讓它們<strong>在同一個交易裡</strong>一起成功或一起失敗。
+          <br /><br />
+          我習慣把每個決定的理由想清楚，而不只是讓功能跑起來。合作時也一樣：做什麼、不做什麼、為什麼這樣做，開工前都會先講清楚。
         </p>
       </section>
     </div>
@@ -519,6 +645,16 @@
             </div>
           </div>
           <div class="skill-card">
+            <p class="skill-card-label">AI 工具</p>
+            <div class="skill-tags">
+              <span class="tag">ComfyUI</span>
+              <span class="tag">提示詞設計</span>
+              <span class="tag">AI API 串接</span>
+              <span class="tag">影片生成模型</span>
+              <span class="tag">本機模型部署</span>
+            </div>
+          </div>
+          <div class="skill-card">
             <p class="skill-card-label">開發工具 &amp; 其他</p>
             <div class="skill-tags">
               <span class="tag">Git / GitHub</span>
@@ -539,6 +675,22 @@
         <p class="section-label">作品</p>
         <h2>做過的東西</h2>
         <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-body">
+              <div class="project-head">
+                <p class="project-title">AI 節點式創作畫布</p>
+                <span class="project-badge badge-live">企業內部使用</span>
+              </div>
+              <p class="project-desc">
+                為電商品牌打造的內部 AI 創作平台。在畫布上把素材、角色、指令和生成節點接起來，從逐字稿、分鏡反推、洗圖到影片生成一條龍完成。
+                同一個節點可以切換本機模型或雲端影片 API，多人共用時有排隊、取消和版本管理。
+              </p>
+              <p class="project-desc" style="margin-top: 10px">
+                React · TypeScript · React Flow · Node.js · ComfyUI ·
+                Ollama · Whisper · Seedance API
+              </p>
+            </div>
+          </div>
           <div class="project-card">
             <img
               class="project-thumb"
@@ -601,16 +753,52 @@
 
     <div class="divider"></div>
 
+    <!-- Process -->
+    <div class="container">
+      <section id="process">
+        <p class="section-label">合作流程</p>
+        <h2>怎麼開始合作</h2>
+        <ol class="steps">
+          <li>
+            <div>
+              <h3>聊需求</h3>
+              <p>寄信簡單說明你想做什麼。我會先評估適合的做法，這一步不收費。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>報價與範圍</h3>
+              <p>把要做的內容、交付項目、可以修改幾次和時程寫清楚，雙方確認後再開始。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>收訂金、開工</h3>
+              <p>收到訂金後開始製作，過程中會定期讓你看進度，有問題可以及早調整。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>交付與教學</h3>
+              <p>交付成品並說明怎麼使用，交付後一段時間內的小問題也會協助處理。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="divider"></div>
+
     <!-- Contact -->
     <div class="container">
       <section id="contact">
         <p class="section-label">聯絡</p>
         <h2>一起做點什麼</h2>
         <div class="contact-box">
-          <h3 style="font-size: 22px; font-weight: 600">有什麼想法嗎？</h3>
-          <p>歡迎聊聊專案、技術，或是工作機會。</p>
+          <h3 style="font-size: 22px; font-weight: 600">有想做的東西嗎？</h3>
+          <p>寄信簡單描述你的需求，或是聊聊工作機會也歡迎。</p>
           <div class="contact-links">
-            <a class="btn-primary" href="mailto:jing1004tw@gmail.com"
+            <a class="btn-primary" href="mailto:hello@jaystudio1004.com"
               >寄信給我</a
             >
             <a
@@ -629,8 +817,8 @@
 
     <div class="container">
       <footer>
-        <span>© 2026 Jay</span>
-        <span>用 Claude 協助設計</span>
+        <span>© 2026 Jay Studio · Est. 2026.10.04</span>
+        <span>Made in Kaohsiung, Taiwan</span>
       </footer>
     </div>
   </body>
