@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <script>
+      if (location.hostname === "nonbiri1004.github.io") {
+        location.replace(
+          "https://jaystudio1004.com" +
+            location.pathname +
+            location.search +
+            location.hash,
+        );
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>案例：lofi puppy radio — Jay Studio</title>
+    <meta
+      name="description"
+      content="一個人經營的 lofi 音樂頻道：AI 量產歌曲、自動挑掉有雜音的歌、後製、串成 2 小時合輯、程式畫像素動畫、剪短片，大部分步驟一行指令完成。"
+    />
+    <meta name="author" content="Jay" />
+    <link rel="canonical" href="https://jaystudio1004.com/work/lofi-puppy/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://jaystudio1004.com/work/lofi-puppy/" />
+    <meta property="og:site_name" content="Jay Studio" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content="案例：一個人做出每支 2 小時的音樂合輯" />
+    <meta
+      property="og:description"
+      content="lofi puppy radio 的自動化產線：從 AI 做歌、品質檢查、後製到像素動畫和短片。"
+    />
+    <meta property="og:image" content="https://jaystudio1004.com/images/lofi-puppy.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#C8612A" />
+    <style>
+      /* 跟首頁同一組色票與字型；案例頁是一篇長文，版面只有一欄 */
+      :root {
+        --bg: #faf7f2;
+        --surface: #f2ebe0;
+        --border: #e0d0bc;
+        --text: #1c1510;
+        --muted: #7a6558;
+        --accent: #c8612a;
+        --accent-lt: #f5e6d4;
+        --night: #0e1030;
+        --radius: 12px;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+      }
+      .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+      a { color: var(--accent); }
+      a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+      nav { padding: 28px 0 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .logo { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; color: var(--text); text-decoration: none; }
+      .back { color: var(--muted); text-decoration: none; font-size: 14px; }
+      .back:hover { color: var(--text); }
+
+      header { padding: 64px 0 32px; }
+      .eyebrow {
+        display: inline-block; font-size: 13px; font-weight: 500; color: var(--accent);
+        background: var(--accent-lt); padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.3px;
+      }
+      h1 { font-size: clamp(32px, 6vw, 48px); font-weight: 700; line-height: 1.2; letter-spacing: -1px; text-wrap: balance; }
+      .lede { margin-top: 20px; font-size: 18px; color: var(--muted); max-width: 36em; }
+
+      .cover {
+        width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block;
+        border-radius: var(--radius); border: 1px solid var(--border); background: var(--night);
+        image-rendering: pixelated;
+      }
+
+      .facts {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+        gap: 20px; margin: 32px 0 0; padding: 24px; background: var(--surface); border-radius: var(--radius);
+      }
+      .facts dt { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+      .facts dd { font-size: 15px; font-weight: 500; margin-top: 2px; }
+
+      section { padding: 56px 0 0; }
+      .label { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 1px; margin-bottom: 8px; }
+      h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.35; margin-bottom: 16px; text-wrap: balance; }
+      section p + p { margin-top: 14px; }
+      strong { font-weight: 600; }
+
+      .steps { list-style: none; counter-reset: step; display: grid; gap: 18px; margin-top: 24px; }
+      .steps li { counter-increment: step; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; }
+      .steps li::before {
+        content: counter(step); width: 36px; height: 36px; border-radius: 50%;
+        background: var(--accent-lt); color: var(--accent); font-weight: 700; font-size: 15px;
+        display: grid; place-items: center;
+      }
+      .steps h3 { font-size: 17px; font-weight: 600; line-height: 36px; }
+      .steps p { color: var(--muted); font-size: 15px; }
+
+      .story { border-top: 1px solid var(--border); padding: 22px 0; }
+      .story:last-child { border-bottom: 1px solid var(--border); }
+      .story h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+      .story p { font-size: 15px; }
+      .story .fix { color: var(--muted); }
+      .story .fix b { color: var(--accent); font-weight: 600; }
+
+      .results { list-style: none; display: grid; gap: 10px; margin-top: 8px; }
+      .results li { padding-left: 22px; position: relative; }
+      .results li::before { content: ""; position: absolute; left: 4px; top: 0.75em; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px;
+        background: var(--surface); padding: 2px 6px; border-radius: 4px;
+      }
+      .tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      .tech span { font-size: 13px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px; color: var(--muted); }
+
+      .cta {
+        margin: 64px 0 0; padding: 32px; background: var(--text); color: var(--bg); border-radius: var(--radius);
+        display: grid; gap: 14px;
+      }
+      .cta h2 { color: var(--bg); margin: 0; }
+      .cta p { color: #d9cbbd; }
+      .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+      .btn {
+        display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none;
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: #b0521f; }
+      .btn-ghost { border: 1px solid #5a4a3f; color: var(--bg); }
+      .btn-ghost:hover { border-color: var(--bg); }
+
+      footer { padding: 48px 0 56px; color: var(--muted); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="logo" href="/">Jay Studio</a>
+        <a class="back" href="/#projects">← 回到作品</a>
+      </nav>
+
+      <header>
+        <span class="eyebrow">案例 · 自己的品牌</span>
+        <h1>一個人，做出每支 2 小時的音樂合輯</h1>
+        <p class="lede">
+          lofi puppy radio 是我經營的 lofi 音樂頻道。主角是一隻戴耳機的像素小狗，陪你讀書、工作。從做歌、檢查、後製、串合輯、做動畫到剪短片，我把大部分步驟寫成程式，一行指令就能跑完。
+        </p>
+      </header>
+
+      <img
+        class="cover"
+        src="/images/lofi-puppy.jpg"
+        alt="像素動畫畫面：戴耳機的小狗坐在夜晚的屋頂上看月亮，背景是城市燈火"
+      />
+
+      <dl class="facts">
+        <div><dt>我的角色</dt><dd>企劃、開發、營運</dd></div>
+        <div><dt>開始時間</dt><dd>2026 年 9 月</dd></div>
+        <div><dt>產出</dt><dd>每支約 60 首、2 小時</dd></div>
+        <div><dt>連結</dt><dd><a href="https://lofipuppyradio.com" target="_blank" rel="noopener noreferrer">網站</a> · <a href="https://www.youtube.com/@lofipuppyradio" target="_blank" rel="noopener noreferrer">YouTube</a></dd></div>
+      </dl>
+
+      <section>
+        <p class="label">問題</p>
+        <h2>手工做一支合輯，要聽完、修好、剪接 60 首歌</h2>
+        <p>
+          一支 2 小時的 lofi 合輯大約需要 60 首歌。就算用 AI 生成，每首還是要有人聽：有沒有破音、有沒有刺耳的雜音、音量是不是一致、結尾會不會突然斷掉。歌做好之後，還要做 2 小時的動畫、剪短片、寫說明、上傳到好幾個平台。
+        </p>
+        <p>
+          全部手工做，一支合輯就要花好幾天。我想要的是<strong>晚上按下去，早上起來歌已經做好、挑好、後製好</strong>，我只要負責試聽和決定。
+        </p>
+      </section>
+
+      <section>
+        <p class="label">做法</p>
+        <h2>把每一步寫成程式，串成一條產線</h2>
+        <ol class="steps">
+          <li>
+            <div>
+              <h3>批次生成</h3>
+              <p>每支合輯一份設定檔，寫好主題、樂器、速度、調性。程式自動排出 70 首的組合，一首一首送進 ComfyUI 跑 AI 音樂模型。中斷了重跑同一行指令就會接著做，不會重複生成。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>自動品質檢查</h3>
+              <p>每首做完立刻量：破音的直接丟掉；另外用頻譜分析找出「整首一直存在的固定音高叮聲」，有的話也淘汰。剩下的才進入下一步。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>後製</h3>
+              <p>濾掉聽不到的超低頻、修正左右聲道、壓掉刺耳的高頻，再把每首的音量統一到串流平台的標準，輸出 24-bit 的無損音檔。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>串成合輯</h3>
+              <p>自動剪掉頭尾多餘的安靜段，依照調性和速度算出每兩首相接的突兀程度，排出聽起來最順的順序，接上淡入淡出，同時產生章節時間表。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>像素動畫與短片</h3>
+              <p>用 Python 逐格畫出像素動畫：小狗每換一首歌換一個動作（散步、坐著、睡覺），場景可以替換。影片做好後，程式再挑出最平穩的段落，剪成 3 支直式短片。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>上架與備份</h3>
+              <p>用 YouTube Data API 上傳；兩台電腦用 Git 交接，成品自動同步到雲端。網站 push 到 GitHub 就自動部署。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <p class="label">卡關與解法</p>
+        <h2>真正花時間的，是找出問題在哪</h2>
+        <div class="story">
+          <h3>每首歌都有一層「鈴鈴聲」</h3>
+          <p>AI 生成的歌從頭到尾有很密的高頻金屬聲。一開始以為是某個頻率，加了濾波也沒用；在描述裡寫「不要鈴鐺」反而更嚴重。</p>
+          <p class="fix">
+            <b>解法：</b>比較三種模型的頻譜，發現模型習慣把這個聲音放在右聲道，高頻右邊比左邊大了 17 dB。後製改成「2 kHz 以上右聲道用左聲道的內容」，再換成高頻最乾淨的模型。之後又把偵測寫成程式，有殘留的歌自動淘汰，不用再靠耳朵一首一首抓。
+          </p>
+        </div>
+        <div class="story">
+          <h3>動畫播到 16 分鐘就不動了</h3>
+          <p>2 小時的影片裡有一張會旋轉的唱片，前面都正常，16 分鐘之後卻停住了。只看開頭幾分鐘根本發現不了。</p>
+          <p class="fix">
+            <b>解法：</b>查到 FFmpeg 的旋轉濾鏡內部會把角度轉成整數，角度累積太大就溢位。改成每轉一圈歸零之後就正常了。從此每支長影片都會抽查開頭、中段、結尾的畫面。
+          </p>
+        </div>
+        <div class="story">
+          <h3>AI 會突然把結尾做成長長的淡出</h3>
+          <p>合輯是一首接一首播的，有的歌最後 30 秒慢慢變小聲，整支聽起來就忽大忽小。</p>
+          <p class="fix">
+            <b>解法：</b>調整生成時的段落描述，讓節奏維持到最後、只做簡短收尾；串合輯時再自動剪掉尾端的安靜段。音量起伏的指標從 9.4 降到 4.0。
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <p class="label">結果</p>
+        <h2>我只負責試聽和決定</h2>
+        <ul class="results">
+          <li>一批 70 首交給電腦跑一個晚上，有問題的歌會自動淘汰，早上起來就能試聽。</li>
+          <li>開始經營兩週內，已經發布 3 支 2 小時合輯，第 4 支正在量產。</li>
+          <li>每支合輯另外挑 12 首做成專輯，準備上架串流平台。</li>
+          <li>網站有會跟著狀態動的像素小狗、番茄鐘和桌布下載，也是用同一套像素程式做的。</li>
+        </ul>
+        <div class="tech">
+          <span>Python</span><span>ComfyUI</span><span>FFmpeg</span><span>NumPy</span><span>Pillow</span>
+          <span>Canvas</span><span>YouTube Data API</span><span>C#</span><span>Git</span><span>Cloudflare Pages</span>
+        </div>
+      </section>
+
+      <div class="cta">
+        <h2>你的團隊也有重複又耗時的內容工作嗎？</h2>
+        <p>
+          大量出圖、出片、檢查品質、上架到不同平台，這些都可以做成一條產線。你負責決定，重複的部分交給系統。
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="/#contact">聊聊你的需求</a>
+          <a class="btn btn-ghost" href="/#services">看服務項目</a>
+        </div>
+      </div>
+
+      <footer>© 2026 Jay Studio</footer>
+    </div>
+  </body>
+</html>
