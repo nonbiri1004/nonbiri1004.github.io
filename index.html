@@ -580,8 +580,8 @@
           <div class="service-card">
             <h3>網站與全端開發</h3>
             <p>
-              形象網站、後台系統、資料庫設計，從規劃到上線。前端用 Vue 或純
-              HTML/CSS，後端用 C# 和 ASP.NET Core。
+              形象網站、後台系統、會員登入、資料庫設計，從規劃到上線。前端用
+              React 或 Vue，後端用 C# 和 ASP.NET Core，部署到雲端並設好自動備份。
             </p>
             <p class="service-for">
               <strong>適合：</strong>需要官網或內部系統的品牌與小店
@@ -613,6 +613,9 @@
           <strong>AI 圖片與影片生成</strong
           >整合進團隊的工作流程，做成大家打開就能用的工具。
           <br /><br />
+          自己的產品也是從零做到上線：一個共用的後端和帳號，撐起<strong>筆記 app</strong>、<strong>每日
+          AI 新聞報</strong>等幾個小工具，登入、同步、雲端部署和每日備份都自己來。
+          <br /><br />
           在五人團隊的全端專題裡，我負責<strong>商品預購</strong>與<strong>獎品兌換</strong>兩個模組，
           從資料表設計、ASP.NET Core Web API 到 Vue 3 前端，整條線自己走完。
           兌換流程要同時扣點數、扣庫存、寫入紀錄，我讓它們<strong>在同一個交易裡</strong>一起成功或一起失敗。
@@ -633,13 +636,16 @@
           <div class="skill-card">
             <p class="skill-card-label">前端</p>
             <div class="skill-tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
               <span class="tag">Vue 3</span>
+              <span class="tag">Vite</span>
               <span class="tag">JavaScript</span>
               <span class="tag">HTML5 / CSS3</span>
               <span class="tag">Bootstrap 5</span>
               <span class="tag">Tailwind CSS</span>
               <span class="tag">RWD 響應式</span>
-              <span class="tag">Axios</span>
+              <span class="tag">PWA</span>
             </div>
           </div>
           <div class="skill-card">
@@ -648,8 +654,10 @@
               <span class="tag">C#</span>
               <span class="tag">ASP.NET Core</span>
               <span class="tag">Entity Framework Core</span>
+              <span class="tag">PostgreSQL</span>
               <span class="tag">SQL Server</span>
               <span class="tag">RESTful API</span>
+              <span class="tag">Google 登入（OAuth）</span>
               <span class="tag">JWT 驗證</span>
               <span class="tag">交易處理</span>
             </div>
@@ -657,16 +665,22 @@
           <div class="skill-card">
             <p class="skill-card-label">AI 工具</p>
             <div class="skill-tags">
+              <span class="tag">Claude API</span>
               <span class="tag">ComfyUI</span>
               <span class="tag">提示詞設計</span>
+              <span class="tag">結構化輸出</span>
               <span class="tag">AI API 串接</span>
               <span class="tag">影片生成模型</span>
               <span class="tag">本機模型部署</span>
             </div>
           </div>
           <div class="skill-card">
-            <p class="skill-card-label">開發工具 &amp; 其他</p>
+            <p class="skill-card-label">雲端部署 &amp; 其他</p>
             <div class="skill-tags">
+              <span class="tag">Docker</span>
+              <span class="tag">Google Cloud Run</span>
+              <span class="tag">Cloudflare Pages / R2</span>
+              <span class="tag">排程與自動備份</span>
               <span class="tag">Git / GitHub</span>
               <span class="tag">Claude Code</span>
               <span class="tag">英文</span>
@@ -685,6 +699,65 @@
         <p class="section-label">作品</p>
         <h2>做過的東西</h2>
         <div class="projects-grid">
+          <div class="project-card">
+            <img
+              class="project-thumb"
+              src="images/puppy-notes.jpg"
+              alt="puppy notes 的畫面：彩色便利貼貼在牆上，上方有標籤分頁和搜尋"
+            />
+            <div class="project-body">
+              <div class="project-head">
+                <p class="project-title">puppy notes</p>
+                <span class="project-badge badge-live">上線中</span>
+              </div>
+              <p class="project-desc">
+                自己做的便利貼筆記 app，從前端、後端、資料庫到雲端部署一個人完成。不登入也能用，登入
+                Google 後筆記和圖片會在手機、電腦之間同步。另外做了每日自動備份、刪除帳號、隱私權頁面，以及每人的容量與流量上限。
+              </p>
+              <p class="project-desc" style="margin-top: 10px">
+                React · TypeScript · ASP.NET Core · EF Core · PostgreSQL ·
+                Google OAuth · Docker · Cloud Run · Cloudflare R2
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://notes.lofipuppy.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >打開 app</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              class="project-thumb"
+              src="images/puppys-paper.jpg"
+              alt="the puppy's paper 的畫面：當天的中文科技新聞，頭條把十二篇相關報導整理成一則"
+            />
+            <div class="project-body">
+              <div class="project-head">
+                <p class="project-title">the puppy's paper</p>
+                <span class="project-badge badge-live">上線中</span>
+              </div>
+              <p class="project-desc">
+                每天早上自動出刊的科技小報。程式讀進十家中英文科技媒體的
+                RSS，交給 AI 把報導同一件事的文章歸成一則、用自己的話寫摘要和重點，也會比對前幾天的頭條，避免同一件事沒有新進展還一直上版。每一則都附上所有原文連結，並標明摘要由
+                AI 撰寫。
+              </p>
+              <p class="project-desc" style="margin-top: 10px">
+                Claude API · ASP.NET Core · RSS · PostgreSQL · Cloud Run Jobs ·
+                Cloud Scheduler · React
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://news.lofipuppy.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >看今天的報紙</a
+                >
+              </div>
+            </div>
+          </div>
           <div class="project-card">
             <img
               class="project-thumb"
