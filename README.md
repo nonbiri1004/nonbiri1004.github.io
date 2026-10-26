@@ -1,7 +1,7 @@
 # Jay Studio
 
 - **What this is:** Jay Studio 的接案網站（jaystudio1004.com），純 HTML/CSS 一頁。
-- **What this isn't:** 白白的網站（lofipuppyradio.com 在 lofi-puppy，lofipuppy.app 在 baibai-tools）。
+- **What this isn't:** 白白的網站（lofipuppyradio.com 在 baibai-music，lofipuppy.app 在 baibai-tools）。
 - **Related:** links to coffee-shop and Liquorman-fullstack as past work.
 
 Jay Studio 的接案網站，線上版：**https://jaystudio1004.com/**
